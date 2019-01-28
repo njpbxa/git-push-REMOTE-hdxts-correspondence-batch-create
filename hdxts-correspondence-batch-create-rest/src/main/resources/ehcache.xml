@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="ehcache.xsd"
+    updateCheck="false" monitoring="autodetect"
+    dynamicConfig="true">
+	<diskStore path="java.io.tmpdir" />
+	<cache name="submitterAuthenticationCache" maxElementsInMemory="2000"
+		maxElementsOnDisk="0" eternal="true" memoryStoreEvictionPolicy="LFU"
+		timeToLiveSeconds="120" />
+
+	<cache name="submitterAuthorizationCache" maxElementsInMemory="2000"
+		maxElementsOnDisk="0" eternal="true" memoryStoreEvictionPolicy="LFU"
+		timeToLiveSeconds="120" />
+
+	<!-- domain information will be saved for 1 days -->
+	<cache name="domains" maxEntriesLocalHeap="10000"
+		timeToIdleSeconds="86400" timeToLiveSeconds="86400"
+		MemoryStoreEvictionPolicy="LRU" maxEntriesLocalDisk="10000000">
+		<persistence strategy="localtempswap" />
+	</cache>
+	
+	
+	<cache name="codeValueCache" maxEntriesLocalHeap="10000"
+		timeToIdleSeconds="2592000" timeToLiveSeconds="2592000"
+		MemoryStoreEvictionPolicy="LRU" maxEntriesLocalDisk="10000000">
+		<persistence strategy="localtempswap" />
+	</cache>
+
+	<defaultCache maxElementsInMemory="300" maxElementsOnDisk="1000"
+		eternal="false" timeToIdleSeconds="120" timeToLiveSeconds="120"
+		overflowToDisk="true" />
+
+	<!-- Code Value & Code Set Caches -->
+
+	<cache name="codeSetCache" maxElementsInMemory="200"
+		maxElementsOnDisk="0" eternal="true" memoryStoreEvictionPolicy="LFU">
+	</cache>
+	<cache name="SERVICE_CATEGORY" maxElementsInMemory="200"
+		maxElementsOnDisk="0" eternal="true" memoryStoreEvictionPolicy="LFU">
+	</cache>
+	<cache name="SERVICE" maxElementsInMemory="200"
+		maxElementsOnDisk="0" eternal="true" memoryStoreEvictionPolicy="LFU">
+	</cache>
+	<cache name="SERVICE_TYPE" maxElementsInMemory="200"
+		maxElementsOnDisk="0" eternal="true" memoryStoreEvictionPolicy="LFU">
+	</cache>
+	<cache name="DELIVERY_STATUS_CODES" maxElementsInMemory="200"
+		maxElementsOnDisk="0" eternal="true" memoryStoreEvictionPolicy="LFU">
+	</cache>
+	<cache name="TRXN_STATUS_CODES" maxElementsInMemory="200"
+		maxElementsOnDisk="0" eternal="true" memoryStoreEvictionPolicy="LFU">
+	</cache>
+	<cache name="TRACKING_EVENT_TYPE" maxElementsInMemory="200"
+		maxElementsOnDisk="0" eternal="true" memoryStoreEvictionPolicy="LFU">
+	</cache>
+	<cache name="TRACKING_RELTN_TYPE" maxElementsInMemory="200"
+		maxElementsOnDisk="0" eternal="true" memoryStoreEvictionPolicy="LFU">
+	</cache>
+	<cache name="HISTORY_TYPE_CODES" maxElementsInMemory="200"
+		maxElementsOnDisk="0" eternal="true" memoryStoreEvictionPolicy="LFU">
+	</cache>
+	<cache name="TRXN_HISTORY_TEXT" maxElementsInMemory="200"
+		maxElementsOnDisk="0" eternal="true" memoryStoreEvictionPolicy="LFU">
+	</cache>
+	<cache name="TRACKING_ALIAS_TYPE" maxElementsInMemory="200"
+		maxElementsOnDisk="0" eternal="true" memoryStoreEvictionPolicy="LFU">
+	</cache>
+	<cache name="ALERT_TYPE_CODES" maxElementsInMemory="200"
+		maxElementsOnDisk="0" eternal="true" memoryStoreEvictionPolicy="LFU">
+	</cache>
+	<cache name="FUNCTIONAL_TRANSACTION_STATUS" maxElementsInMemory="200"
+		maxElementsOnDisk="0" eternal="true" memoryStoreEvictionPolicy="LFU">
+	</cache>
+
+
+	<!-- Lookup Tables Entity Caches -->
+
+	<cache name="partnerCache" maxElementsInMemory="100"
+		maxElementsOnDisk="0" timeToIdleSeconds="3600" timeToLiveSeconds="3600"
+		memoryStoreEvictionPolicy="LFU">
+	</cache>
+
+	<cache name="submitterCache" maxElementsInMemory="100"
+		maxElementsOnDisk="0" timeToIdleSeconds="3600" timeToLiveSeconds="3600"
+		memoryStoreEvictionPolicy="LFU">
+	</cache>
+
+	<cache name="serviceCache" maxElementsInMemory="100"
+		maxElementsOnDisk="0" eternal="true" memoryStoreEvictionPolicy="LFU">
+	</cache>
+
+	<cache name="serviceMethodCache" maxElementsInMemory="100"
+		maxElementsOnDisk="0" eternal="true" memoryStoreEvictionPolicy="LFU">
+	</cache>
+</ehcache>

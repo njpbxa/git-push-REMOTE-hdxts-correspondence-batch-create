@@ -1,0 +1,88 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.cerner.edi</groupId>
+		<artifactId>edi-parent-pom</artifactId>
+		<version>3.1.5</version>
+	</parent>
+        
+	<groupId>com.cerner.hdxts.correspondence</groupId>
+	<artifactId>hdxts-correspondence-batch-create</artifactId>
+	<version>1.0.8-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<spring.version>4.3.7.RELEASE</spring.version>
+		<jackson.version>2.8.7</jackson.version>
+		<edi.concurrent.tracking.service.version>1.0.15</edi.concurrent.tracking.service.version>
+		<edi.dep.service.version>3.1.15.1</edi.dep.service.version>
+		<edi.exception.service.version>1.0.0</edi.exception.service.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<spring.boot>1.5.2.RELEASE</spring.boot>
+		<maven.javadoc.skip>true</maven.javadoc.skip>
+	</properties>
+	<name>EDI eCorrespondence Service Batch Create Module</name>
+	<description>The parent pom to all the projects in the Correspondence Service package</description>
+	<url>${home.url}</url>
+
+	<scm>
+		<url>https://github.cerner.com/HDXTS/hdxts-correspondence-batch-create</url>
+		<connection>scm:git:https://github.cerner.com/HDXTS/hdxts-correspondence-batch-create.git</connection>
+		<developerConnection>scm:git:https://github.cerner.com/HDXTS/hdxts-correspondence-batch-create.git</developerConnection>
+	  <tag>HEAD</tag>
+  </scm>
+	<modules>
+		<module>hdxts-correspondence-batch-create-api</module>
+		<module>hdxts-correspondence-batch-create-impl</module>
+		<module>hdxts-correspondence-batch-create-rest</module>
+	</modules>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.3</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.scm</groupId>
+						<artifactId>maven-scm-provider-gitexe</artifactId>
+						<version>1.9.5</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+	<profiles>
+		<profile>
+			<id>jacoco</id>
+			<properties>
+				<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+				<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+				<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+				<sonar.scm.provider>git</sonar.scm.provider>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+						<version>0.7.0.201403182114</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>prepare-agent</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<destFile>${sonar.jacoco.reportPath}</destFile>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>
